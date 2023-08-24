@@ -1,0 +1,44 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: myapp7-frontend
+  annotations:
+    argocd/app-name: myapp7-frontend
+    backstage.io/kubernetes-id: myapp7-frontend
+    backstage.io/kubernetes-namespace: devhub
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: devhub-mad/myapp7-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - frontend
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.cluster-8mf2b.sandbox3125.opentlc.com/dev-pipelines/ns/devhub/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.cluster-8mf2b.sandbox3125.opentlc.com/k8s/ns/devhub/deployments/myapp7-frontend
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.cluster-8mf2b.sandbox3125.opentlc.com/#https://github.com/devhub-mad/myapp7-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/varodrig"
+  system: workshop-system-devhub
+  providesApis:
+    - gateway-api-devhub
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-devhub
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+spec:
+  owner: "user:default/varodrig"
+
